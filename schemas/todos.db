@@ -1,0 +1,9 @@
+database TodosDatabase {
+  table Todos @item("TodoItem") {
+    @autoincrement id: number;
+    @index name: string;
+    complete: boolean;
+    timestamp: number;
+  }
+}
+

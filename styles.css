@@ -1,0 +1,127 @@
+:root {
+  --main-heading-font-size: 18px;
+  --secondary-heading-font-size: 14px;
+  --primary-text-color: rgba(15, 20, 80, 1);
+  --secondary-text-color: rgba(15, 20, 80, 1);
+  --tertiary-text-color: rgba(15, 20, 80, 1);
+  --secondary-line-color: rgba(15, 20, 80, 0.4);
+  --secondary-icon-button: rgba(15, 20, 80, 0.4);
+  --secondary-icon-button-active: rgba(50, 60, 180, 0.8);
+  --primary-input-focus-color: rgba(70, 80, 190, 0.9);
+  --wash: rgba(180, 180, 230, 0.2);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.todo-app-title {
+  font-size: var(--main-heading-font-size);
+  font-weight: 500;
+  padding: 16px;
+  text-align: center;
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-section {
+  width: 40%;
+}
+
+.todo-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon-button {
+  border: none;
+  background-color: transparent;
+  appearance: none;
+  outline: none;
+  display: block;
+  cursor: pointer;
+}
+
+.icon-button > i {
+  font-size: 16px;
+  color: var(--secondary-icon-button);
+}
+
+.icon-button:hover > i {
+  color: var(--secondary-icon-button-active);
+}
+
+.todo-input-wrapper > button {
+  position: absolute;
+  right: 8px;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  border: 1px solid var(--secondary-line-color);
+}
+
+.todo-input:focus {
+  outline: none;
+  border: 1px solid var(--primary-input-focus-color);
+}
+
+.todo-list-container {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(20%, 50%);
+  column-gap: 1rem;
+  justify-content: center;
+  /* justify-content: center; */
+}
+
+.todo-list {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.todo-list-item {
+  display: flex;
+  flex-grow: 1;
+  padding: 8px;
+  background-color: var(--wash);
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.todo-list-item-content {
+  flex-grow: 1;
+  padding: 0 12px 0 0;
+}
+
+.todo-list-item-title {
+  font-size: var(--secondary-heading-font-size);
+  font-weight: 500;
+}
+
+.todo-list-item.complete .todo-list-item-content {
+  text-decoration: line-through;
+}
+
+.todo-list-item-actions {
+  display: flex;
+  gap: 6px;
+}

@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script type="module" src="./src/index.ts"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="todo-app">
+      <header class="content-section">
+        <h1 class="todo-app-title">Todo List</h1>
+      </header>
+      <form id="todo-form" class="todo-form content-section">
+        <div class="todo-input-wrapper">
+          <input
+            id="todo-input"
+            class="todo-input"
+            type="text"
+            placeholder="What to do..."
+          />
+          <button class="icon-button" type="submit" aria-label="Add new todo">
+            <i class="fas fa-plus-circle" />
+          </button>
+        </div>
+      </form>
+      <div id="todo-list-container" class="todo-list-container">
+        <ul id="todo-list" class="todo-list"></ul>
+      </div>
+    </main>
+    <template id="todo-item-template">
+      <li class="todo-list-item">
+        <div class="todo-list-item-content">
+          <h3 class="todo-list-item-title"></h3>
+        </div>
+        <div class="todo-list-item-actions">
+          <button
+            class="icon-button check-button"
+            type="submit"
+            aria-label="Add new todo"
+          >
+            <i class="fa-regular fa-circle-check" />
+          </button>
+          <button
+            class="icon-button delete-button"
+            type="submit"
+            aria-label="Add new todo"
+          >
+            <i class="fa-solid fa-trash-can" />
+          </button>
+        </div>
+      </li>
+    </template>
+    <script type="module" src="./src/app.ts"></script>
+  </body>
 </html>
