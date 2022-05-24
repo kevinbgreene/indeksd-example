@@ -21,8 +21,8 @@ export class Controller {
     this.#todoList.onDeleteItem(this.handleDeleteTodo.bind(this));
   }
 
-  async renderList(): Promise<void> {
-    const todos = await this.#store.todos.sortBy("id");
+  async show(): Promise<void> {
+    const todos = await this.#store.todos.sortBy("id", { withJoins: false });
     this.#todoList.clear();
     for (const todo of todos) {
       this.#todoList.addTodo(todo);
@@ -30,17 +30,15 @@ export class Controller {
   }
 
   async handleCompleteTodo(id: number): Promise<void> {
-    const transaction = this.#store.transaction(["Todos"], "readwrite");
-    const todo = await this.#store.todos.get({ id }, { transaction });
-    console.log({ todo });
-    const updatedTodo = await this.#store.todos.put(
-      {
-        ...todo,
-        complete: true,
+    const todo = await this.#store.todos.get({ id });
+    await this.#store.todos.put({
+      ...todo,
+      complete: true,
+      status: {
+        id: "complete",
+        displayName: "Complete",
       },
-      { transaction },
-    );
-    console.log({ updatedTodo });
+    });
     this.#todoList.markComplete(id);
   }
 
@@ -53,6 +51,10 @@ export class Controller {
     const todo = await this.#store.todos.add({
       name: title,
       complete: false,
+      status: {
+        id: "not_started",
+        displayName: "Not Started",
+      },
       timestamp: Date.now(),
     });
 

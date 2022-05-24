@@ -9,7 +9,7 @@ async function main() {
   const todoForm = new TodoForm();
   const controller = new Controller(todoList, todoForm, db);
 
-  controller.renderList();
+  controller.show();
 }
 
 main();

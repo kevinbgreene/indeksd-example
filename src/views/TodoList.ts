@@ -23,7 +23,6 @@ export class TodoList {
 
   markComplete(todoId: number): void {
     const itemToMark = querySelector(this.#todoList, `#todo-item-${todoId}`);
-    console.log({ itemToMark });
     itemToMark.classList.add("complete");
   }
 
@@ -47,7 +46,6 @@ export class TodoList {
     handler: (id: number) => void,
   ): void {
     onSelector(selector, eventName, ({ target }) => {
-      console.log("handle: ", target);
       if (target instanceof Element) {
         const parent = closest<HTMLElement>(target, ".todo-list-item");
         const todoId = parent.dataset.id;

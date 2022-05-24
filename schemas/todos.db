@@ -1,8 +1,14 @@
-database TodosDatabase {
+database TodosDatabase @version(3) {
+  table Status {
+    @key id: string;
+    displayName: string;
+  }
+
   table Todos @item("TodoItem") {
     @autoincrement id: number;
     @index name: string;
     complete: boolean;
+    @index status?: Status;
     timestamp: number;
   }
 }

@@ -10,7 +10,8 @@ export function onSelector<EventName extends keyof GlobalEventHandlersEventMap>(
   callback: (e: GlobalEventHandlersEventMap[EventName]) => void,
 ): void {
   document.addEventListener(eventName, (e) => {
-    if ((e.target as Element).closest(selector)) {
+    const target = e.target;
+    if (target instanceof Element && target.closest(selector)) {
       callback(e);
     }
   });
