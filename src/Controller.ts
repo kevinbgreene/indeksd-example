@@ -19,6 +19,12 @@ export class Controller {
     this.#todoForm.onAddItem(this.handleAddNewTodo.bind(this));
     this.#todoList.onCompleteItem(this.handleCompleteTodo.bind(this));
     this.#todoList.onDeleteItem(this.handleDeleteTodo.bind(this));
+
+    this.#store.todos.subscribe("add", (e) => {
+      if (e.type === "add") {
+        this.#todoList.addTodo(e.data);
+      }
+    });
   }
 
   async show(): Promise<void> {
@@ -58,7 +64,6 @@ export class Controller {
       timestamp: Date.now(),
     });
 
-    this.#todoList.addTodo(todo);
     this.#todoForm.clearInput();
   }
 }
